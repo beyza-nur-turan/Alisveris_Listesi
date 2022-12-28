@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="List.css" rel="stylesheet" />
+
+    <title>Alışveriş Listesi</title>
+  </head>
+  <body>
+    <script>
+      function clear(e1) {
+        e1.remove();
+      }
+      function sil() {
+        document.getElementById("products").innerHTML = "";
+      }
+      var urun = document.getElementById(urun);
+      function ekle(urun) {
+        var urun = document.getElementById("urun").value;
+        var node = document.createElement("li");
+        var textnode = document.createTextNode(urun);
+        var node2 = document.createElement("button");
+        var textnode2 = document.createTextNode("Sil");
+        node2.onclick = (e) => {
+          clear(e.path[1]);
+        };
+
+        node2.appendChild(textnode2);
+        node.appendChild(textnode);
+        node.appendChild(node2);
+        document.getElementById("products").appendChild(node);
+      }
+      
+    </script>
+    <div class="container">
+      <div class="content">
+        <h3>ALIŞVERİŞ LİSTESİ</h3>
+        <div class="search">
+          <input
+            class="urun"
+            id="urun"
+            type="text"
+            value="Alınacak Malzemeyi Girin"
+            onclick="if(this.value=='Alınacak Malzemeyi Girin') this.value='';"
+            onblur="if(this.value=='') this.value='Alınacak Malzemeyi Girin';"
+          />
+          <button id="ekleButon" onclick="ekle()">Ekle</button>
+          <button id="silButon" onclick="sil()">Tümünü Sil</button>
+          <br />
+          <ul id="products"></ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
